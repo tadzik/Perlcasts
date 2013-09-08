@@ -1,0 +1,27 @@
+use strict;
+use warnings;
+use File::Slurp;
+
+my $file = read_file('videos');
+
+my $tmpl = <<'EOT';
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE perlcasts (id int primary_key, title varchar[64], description text, youtube_id varchar[16]);
+%s
+COMMIT;
+EOT
+
+my $insert_tmpl = <<'EOI';
+INSERT INTO "perlcasts" VALUES(%d,'%s','%s','%s');
+EOI
+
+my @inserts;
+my @videos = split("\n---\n", $file);
+my $id = 1;
+for my $vid (@videos) {
+    my ($title, $yt_id, $desc) = split("\n", $vid, 3);
+    push @inserts, sprintf($insert_tmpl, $id++, $title, $desc, $yt_id);
+}
+
+write_file('database.sql', sprintf($tmpl, join("\n", @inserts)));

@@ -1,0 +1,12 @@
+Cooking Perl with Chef: Hello World Demonstration
+H93rt-KtwBE
+Screencast demonstration of deploying a simple Perl web application using the Chef configuration management tool
+---
+Rakudo Star 2011.04 - writing a web server in Perl 6
+VJi1hsB4vN0
+Screencast showing how to install Rakudo Star on Windows and how to launch a simple web server written in Perl 6. For further Perl 6 related screencasts see http://szabgab.com/perl6.html
+---
+Using the built-in debugger of Perl as REPL
+pL_nDlXNqLY
+The command line debugger that comes with perl is very powerful.
+Not only does it allow us to debug script but it can be used as a REPL - a Read Eval Print Loop to explore the capabilities of the language. There are a few basic examples in this screencast.
